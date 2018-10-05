@@ -69,7 +69,7 @@ void correct_reed_solomon_destroy(correct_reed_solomon *rs) {
 
 void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
     for (unsigned int i = 0; i < 256; i++) {
-        printf("%3d  %3d    %3d  %3d\n", i, rs->field.exp[i], i, rs->field.log[i]);
+        printf("%3u  %3d    %3u  %3d\n", i, rs->field.exp[i], i, rs->field.log[i]);
     }
     printf("\n");
 
@@ -84,7 +84,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
 
     printf("generator: ");
     for (unsigned int i = 0; i < rs->generator.order + 1; i++) {
-        printf("%d*x^%d", rs->generator.coeff[i], i);
+        printf("%d*x^%u", rs->generator.coeff[i], i);
         if (i < rs->generator.order) {
             printf(" + ");
         }
@@ -93,7 +93,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
 
     printf("generator (alpha format): ");
     for (unsigned int i = rs->generator.order + 1; i > 0; i--) {
-        printf("alpha^%d*x^%d", rs->field.log[rs->generator.coeff[i - 1]], i - 1);
+        printf("alpha^%d*x^%u", rs->field.log[rs->generator.coeff[i - 1]], i - 1);
         if (i > 1) {
             printf(" + ");
         }
@@ -110,7 +110,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
             printf(" + ");
         }
         has_printed = true;
-        printf("%d*x^%d", rs->encoded_remainder.coeff[i], i);
+        printf("%d*x^%u", rs->encoded_remainder.coeff[i], i);
     }
     printf("\n\n");
 
@@ -135,7 +135,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
             printf(" + ");
         }
         has_printed = true;
-        printf("%d*x^%d", rs->error_locator.coeff[i], i);
+        printf("%d*x^%u", rs->error_locator.coeff[i], i);
     }
     printf("\n\n");
 
@@ -158,7 +158,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
             printf(" + ");
         }
         has_printed = true;
-        printf("%d*x^%d", rs->error_evaluator.coeff[i], i);
+        printf("%d*x^%u", rs->error_evaluator.coeff[i], i);
     }
     printf("\n\n");
 
@@ -172,7 +172,7 @@ void correct_reed_solomon_debug_print(correct_reed_solomon *rs) {
             printf(" + ");
         }
         has_printed = true;
-        printf("%d*x^%d", rs->error_locator_derivative.coeff[i], i);
+        printf("%d*x^%u", rs->error_locator_derivative.coeff[i], i);
     }
     printf("\n\n");
 

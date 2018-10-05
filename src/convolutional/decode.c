@@ -5,7 +5,7 @@ void conv_decode_print_iter(correct_convolutional *conv, unsigned int iter,
     if (iter < 2220) {
         return;
     }
-    printf("iteration: %d\n", iter);
+    printf("iteration: %u\n", iter);
     distance_t *errors = conv->errors->write_errors;
     printf("errors:\n");
     for (shift_register_t i = 0; i < conv->numstates / 2; i++) {
